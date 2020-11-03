@@ -29,4 +29,18 @@ public class TestLinkedList {
 				&& LinkedList.tail.equals(myFirstNode);
 		Assert.assertTrue(result);
 	}
+
+	@Test
+	public void given3NumbersWhenAppendedToLinkedListShouldBeAddedAtTheLast() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
+		LinkedList lst = new LinkedList();
+		lst.add(myFirstNode);
+		lst.append(mySecondNode);
+		lst.append(myThirdNode);
+		boolean result = LinkedList.head.equals(myFirstNode) && LinkedList.head.getNext().equals(mySecondNode)
+				&& LinkedList.tail.equals(myThirdNode);
+		Assert.assertTrue(result);
+	}
 }
