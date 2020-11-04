@@ -21,7 +21,7 @@ public class TestLinkedList {
 		MyNode<Integer> myFirstNode = new MyNode<Integer>(70);
 		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
 		MyNode<Integer> myThirdNode = new MyNode<Integer>(56);
-		LinkedList lst = new LinkedList();
+		LinkedList<Integer> lst = new LinkedList<Integer>();
 		lst.add(myFirstNode);
 		lst.add(mySecondNode);
 		lst.add(myThirdNode);
@@ -35,10 +35,24 @@ public class TestLinkedList {
 		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
 		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
 		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
-		LinkedList lst = new LinkedList();
+		LinkedList<Integer> lst = new LinkedList<Integer>();
 		lst.add(myFirstNode);
 		lst.append(mySecondNode);
 		lst.append(myThirdNode);
+		boolean result = LinkedList.head.equals(myFirstNode) && LinkedList.head.getNext().equals(mySecondNode)
+				&& LinkedList.tail.equals(myThirdNode);
+		Assert.assertTrue(result);
+	}
+
+	@Test
+	public void given3NumbersWhenInsertedToLinkedListShouldBeAddedInBetweenElements() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
+		LinkedList<Integer> lst = new LinkedList<Integer>();
+		lst.add(myFirstNode);
+		lst.append(myThirdNode);
+		lst.insert(myFirstNode, mySecondNode);
 		boolean result = LinkedList.head.equals(myFirstNode) && LinkedList.head.getNext().equals(mySecondNode)
 				&& LinkedList.tail.equals(myThirdNode);
 		Assert.assertTrue(result);
