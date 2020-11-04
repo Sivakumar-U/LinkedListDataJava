@@ -95,12 +95,12 @@ public class TestLinkedList {
 		lst.add(myFirstNode);
 		lst.append(mySecondNode);
 		lst.append(myThirdNode);
-		INode result = lst.search(mySecondNode);
+		INode<Integer> result = lst.search(mySecondNode);
 		Assert.assertEquals(mySecondNode, result);
 	}
 
 	@Test
-	public void given3NumbersWhenAddedtoLinkedListToSearchAndInsertElement() {
+	public void given3Numbers_WhenAddedtoLinkedList_ToSearchAndInsertElement() {
 		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
 		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
 		MyNode<Integer> myThirdNode = new MyNode<Integer>(40);
@@ -114,5 +114,21 @@ public class TestLinkedList {
 		boolean result = LinkedList.head.equals(myFirstNode) && LinkedList.head.getNext().equals(mySecondNode)
 				&& LinkedList.head.getNext().getNext().equals(myThirdNode) && LinkedList.tail.equals(myFourthNode);
 		Assert.assertTrue(result);
+	}
+
+	@Test
+	public void given4Numbers_WhenAddedtoLinkedList_SearchAndDeleteNode() {
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(40);
+		MyNode<Integer> myFourthNode = new MyNode<Integer>(70);
+		LinkedList<Integer> lst = new LinkedList<Integer>();
+		lst.append(myFirstNode);
+		lst.append(mySecondNode);
+		lst.append(myThirdNode);
+		lst.append(myFourthNode);
+		INode node = lst.deleteNodeInBetween(myThirdNode);
+		int size = lst.size();
+		Assert.assertEquals(3, size);
 	}
 }
