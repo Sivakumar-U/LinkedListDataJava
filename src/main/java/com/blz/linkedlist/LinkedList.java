@@ -1,8 +1,8 @@
 package com.blz.linkedlist;
 
 public class LinkedList<K> {
-	public static INode head;
-	public static INode tail;
+	static INode head;
+	static INode tail;
 
 	public LinkedList() {
 		this.head = null;
@@ -36,6 +36,13 @@ public class LinkedList<K> {
 		INode tempNode = myNode.getNext();
 		myNode.setNext(newNode);
 		newNode.setNext(tempNode);
+	}
+
+	public INode pop() {
+		INode tempNode = this.head;
+		this.head = head.getNext();
+		return tempNode;
+
 	}
 
 }
