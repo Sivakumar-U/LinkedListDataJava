@@ -55,13 +55,22 @@ public class LinkedList<K> {
 		return tempNode;
 	}
 
-	public INode search(K key) {
-		INode tempNode = head;
-		while (tempNode != null && tempNode.getNext() != null) {
-			if (tempNode.getKey() == key)
-				head = tempNode;
+	public INode<K> search(INode<K> key) {
+		INode<K> tempNode = head;
+		while (!tempNode.getNext().equals(key)) {
 			tempNode = tempNode.getNext();
 		}
-		return head;
+		return key;
 	}
+
+	public void searchAndInsertValue(INode<K> key, INode<K> newNode) {
+		INode<K> tempNode = head;
+		while (!tempNode.getNext().equals(key)) {
+			tempNode = tempNode.getNext();
+		}
+		INode<K> tempNode1 = key.getNext();
+		key.setNext(newNode);
+		newNode.setNext(tempNode1);
+	}
+
 }
