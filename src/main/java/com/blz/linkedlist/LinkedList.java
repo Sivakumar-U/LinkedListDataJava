@@ -55,4 +55,13 @@ public class LinkedList<K> {
 		return tempNode;
 	}
 
+	public INode search(K key) {
+		INode tempNode = head;
+		while (tempNode != null && tempNode.getNext() != null) {
+			if (tempNode.getKey() == key)
+				head = tempNode;
+			tempNode = tempNode.getNext();
+		}
+		return head;
+	}
 }
