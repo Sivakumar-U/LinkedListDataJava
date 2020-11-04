@@ -38,8 +38,8 @@ public class LinkedList<K> {
 		newNode.setNext(tempNode);
 	}
 
-	public INode pop() {
-		INode tempNode = this.head;
+	public INode<K> pop() {
+		INode<K> tempNode = this.head;
 		this.head = head.getNext();
 		return tempNode;
 
@@ -71,6 +71,38 @@ public class LinkedList<K> {
 		INode<K> tempNode1 = key.getNext();
 		key.setNext(newNode);
 		newNode.setNext(tempNode1);
+	}
+
+	public INode<K> deleteNodeInBetween(INode<K> key) {
+		INode firstNode = head;
+		INode tempNode = head;
+		while (tempNode != key) {
+			tempNode = tempNode.getNext();
+		}
+		this.head = tempNode;
+		pop();
+		INode LastNode = this.head;
+		this.head = firstNode;
+		INode tempNode1 = this.head;
+		while (tempNode1.getNext() != key) {
+			tempNode1 = tempNode1.getNext();
+		}
+		tempNode1.setNext(LastNode);
+		return this.head;
+	}
+
+	public int size() {
+		int size = 0;
+		if (this.head == null)
+			return size;
+		else
+			size = 1;
+		INode tempNode = this.head;
+		while (tempNode.getNext() != null) {
+			tempNode = tempNode.getNext();
+			size++;
+		}
+		return size;
 	}
 
 }
